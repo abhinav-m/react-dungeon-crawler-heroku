@@ -1,0 +1,181 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width:100vw;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items: center;
+  background:lightblue;
+}
+
+.wrapper {
+    margin: 0;
+    padding: 0;
+    height:720px;
+    width:1400px;
+    outline-style: groove;
+    outline-color: black;
+    background:grey;
+}
+
+.row {
+   width:1400px;
+  height: 45px;
+}
+
+
+
+.cell {
+
+    float: left;
+    height: 45px;
+    width: 25px;
+    background: #CF1020;
+}
+
+.gameInfo {
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  align-items:center;
+}
+
+.dungeon {
+  background:black;
+}
+
+
+.health {
+
+    background-image: url('./images/PotionTallGreen.PNG');
+}
+
+.weapon-1 {
+  background: url('./images/SwordShort.PNG');
+}
+
+.weapon-2 {
+  background: url('./images/SwordSabre.PNG');
+}
+
+.weapon-3 {
+  background: url('./images/SwordMedieval.PNG');
+}
+
+.weapon-4 {
+  background: url('./images/SwordFlaming.PNG');
+}
+
+.nextLevel {
+    background-image: url('./images/stone_stairs_down.png');
+    background-repeat: no-repeat;
+}
+
+.enemy {
+
+	background: url('./images/enemy-down.png');
+      background-repeat: no-repeat;
+}
+
+.boss {
+  background: url('./images/boss-down.png');
+  background-repeat: no-repeat;
+}
+
+.healthBar {
+  background:red;
+  color:red;
+  appearence:none;
+  border-radius:2px;
+}
+
+.hidden {
+  background:white;
+}
+.lord-up-0,
+.lord-up-1,
+.lord-up-2,
+.lord-up-3,
+.lord-down-0,
+.lord-down-1,
+.lord-down-2,
+.lord-down-3,
+.lord-left-0,
+.lord-left-1,
+.lord-left-2,
+.lord-left-3,
+.lord-right-0,
+.lord-right-1,
+.lord-right-2,
+.lord-right-3 {
+    background-image: url('./images/starlord.png');
+    background-repeat: no-repeat;
+}
+
+.lord-down-0 {
+    background-position: -5px -1px;
+}
+
+.lord-down-1 {
+    background-position: -36px -2px;
+}
+
+.lord-down-2 {
+    background-position: -69px -1px;
+}
+
+.lord-down-3 {
+    background-position: -102px -2px;
+}
+
+.lord-left-0 {
+    background-position: -9px -50px;
+}
+
+.lord-left-1 {
+    background-position: -39px -51px;
+}
+
+.lord-left-2 {
+    background-position: -73px -50px;
+}
+
+.lord-left-3 {
+    background-position: -103px -51px;
+}
+
+.lord-right-0 {
+    background-position: -5px -98px;
+}
+
+.lord-right-1 {
+    background-position: -37px -99px;
+}
+
+.lord-right-2 {
+    background-position: -69px -98px;
+}
+
+.lord-right-3 {
+    background-position: -100px -99px;
+}
+
+.lord-up-0 {
+    background-position: -4px -145px;
+}
+
+.lord-up-1 {
+    background-position: -38px -146px;
+}
+
+.lord-up-2 {
+    background-position: -68px -145px;
+}
+
+.lord-up-3 {
+    background-position: -99px -146px;
+}
