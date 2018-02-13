@@ -300,7 +300,7 @@ cellClass(cellType,pos) {
   const cells = ['cell','cell dungeon','cell dungeon health','cell dungeon enemy',`cell dungeon  weapon-${this.state.levelNum}`,'cell dungeon nextLevel',`cell dungeon   ${this.state.movClass}`,`cell dungeon boss`];
   if(pos==='9,16')
   console.log('test');
-  return this.state.revealed.includes(pos) ? cells[cellType] : cells[cellType];//' hidden';
+  return this.state.revealed.includes(pos) ? cells[cellType] : cells[cellType]+' hidden';
 }
 
 // TODO: Helper function to determine if character can move to cell or not.
