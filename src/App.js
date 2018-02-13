@@ -132,6 +132,7 @@ const getRevealedNeighbours = (row,col) => {
       if(Math.abs(v[1]) === 1) {
         revealed.push( (row+v[0]) + ',' + (col+v[1]) );
         revealed.push( (row+v[0]) + ',' + (col+v[1]*2) );
+        revealed.push( (row+v[0]) + ',' + (col+v[1]*3) );
       }
       else
       revealed.push( (row+v[0]) + ',' + (col+v[1]) );
