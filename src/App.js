@@ -148,7 +148,8 @@ const InstructionScreen = () => {
 <ul>
 <li className='instruction' >Each level contains enemies  who grant you experience on killing them. When you come in contact with an enemy you deal damage to them, while taking damage in return. <span className ='right enemy'></span></li>
 <li className='instruction' >The HUD on the top of the screen displays your healthbar(in green),your current level,your weapon and the experience needed to level up.</li>
-<li className='instruction' >Each level contains one unique weapon  which will make you much stronger to help fight your enemies. Your current weapon along with your level determines how much damage you will deal to your enemies. <span className ='right weapon-2'></span></li>
+<li className='instruction' >Each level contains one unique weapon  which will make you much stronger to help fight your enemies.  <span className ='right weapon-2'></span></li>
+<li className='instruction' >Your current weapon along with your level determines how much damage you will deal to your enemies.</li>
 <li className='instruction' >Health potions are spread throughout the map to help you in case your health falls low. <span className ='right health'></span> </li>
 <li className='instruction' >To proceed to the next level, find the entrance  NOTE: ONCE YOU ENTER THE NEXT LEVEL YOU CANT TURN BACK. <span className ='right nextLevel'></span>. </li>
 <li className='instruction' >The objective of the game is to beat the BOSS in the 4th dungeon. </li>
