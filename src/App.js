@@ -152,6 +152,7 @@ const InstructionScreen = () => {
 <li className='instruction' >Health potions are spread throughout the map to help you in case your health falls low. <span className ='right health'></span> </li>
 <li className='instruction' >To proceed to the next level, find the entrance  NOTE: ONCE YOU ENTER THE NEXT LEVEL YOU CANT TURN BACK. <span className ='right nextLevel'></span>. </li>
 <li className='instruction' >The objective of the game is to beat the BOSS in the 4th dungeon. </li>
+<li className='instruction' >Use the arrow keys to move around in the game. </li>
 <li className='instruction' >Good luck, may the force be with you. </li>
 </ul>
   </div>)
