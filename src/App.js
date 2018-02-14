@@ -141,6 +141,22 @@ const getRevealedNeighbours = (row,col) => {
     return revealed;
 }
 
+
+const InstructionScreen = () => {
+  return(<div className ='instructionBoard'>
+  <h1>Instructions</h1>
+<ul>
+<li className='instruction' >Each level contains enemies  who grant you experience on killing them. When you come in contact with an enemy you deal damage to them, while taking damage in return. <span className ='right enemy'></span></li>
+<li className='instruction' >The HUD on the top of the screen displays your healthbar(in green),your current level,your weapon and the experience needed to level up.</li>
+<li className='instruction' >Each level contains one unique weapon  which will make you much stronger to help fight your enemies. Your current weapon along with your level determines how much damage you will deal to your enemies. <span className ='right weapon-2'></span></li>
+<li className='instruction' >Health potions are spread throughout the map to help you in case your health falls low. <span className ='right health'></span> </li>
+<li className='instruction' >To proceed to the next level, find the entrance  NOTE: ONCE YOU ENTER THE NEXT LEVEL YOU CANT TURN BACK. <span className ='right nextLevel'></span>. </li>
+<li className='instruction' >The objective of the game is to beat the BOSS in the 4th dungeon. </li>
+<li className='instruction' >Good luck, may the force be with you. </li>
+</ul>
+  </div>)
+}
+
 class Game extends Component {
   constructor(props) {
     super(props);
@@ -163,16 +179,61 @@ class Game extends Component {
       enemies: {},
       bossHealth:250,
       isWin:false,
-      isLoss:false
+      isLoss:false,
+      gameStarted:false
     }
     this.moveChar = this.moveChar.bind(this);
-
-
+    this.startGame = this.startGame.bind(this);
+    this.resetGame = this.resetGame.bind(this);
   }
 
+  componentDidMount(){
+   document.addEventListener("keydown", this.moveChar, false);
+ }
+ componentWillUnmount(){
+   document.removeEventListener("keydown", this.moveChar, false);
+ }
 
+//start game,initialise everything.
+ startGame() {
+   let level = MAKE_DUNGEON(MATRIX(16,56));
+   let revealed = getRevealedNeighbours(13,16);
+   revealed.push(13+','+16);
+   this.setState({
+     level:level,
+     player_pos_board :   [13,16],
+     movIndex:0,
+     movClass:'lord-up-0',
+     playerDIR:38,
+     revealed:revealed,
+     weapon:0,
+     weapons:['Fists','Needle','LongClaw','LightBringer'],
+     health:100,
+     levelNum:1,
+     playerLevel:1,
+     playerExp:0,
+     enemies: {},
+     bossHealth:250,
+     isWin:false,
+     isLoss:false,
+     gameStarted:true
+   });
+ }
+
+ resetGame() {
+this.setState({
+  gameStarted:false
+})
+ }
+
+//Check if key pressed is arrow key
+isArrowKey(key) {
+  return (key === 37 || key === 38 || key === 39 || key === 40  )
+}
 
  moveChar(e) {
+
+   if(this.isArrowKey(e.which)) {
    //The whole board.
    let level = this.state.level;
 
@@ -206,6 +267,7 @@ class Game extends Component {
   }
 
    var movClass;
+
    /* left = 37
    up = 38
    right = 39
@@ -279,6 +341,7 @@ class Game extends Component {
      movClass:'lord-up-0',
      playerDIR:38,
      level:newLevel,
+     enemies:newEnemies,
      revealed: newRevealed
    });
  }
@@ -292,9 +355,10 @@ revealed.push(player_row_board+','+player_col_board);
     playerDIR:playerDIR,
     level:level,
     revealed: revealed
-  });
-}
+     });
+   }
  }
+}
 
 cellClass(cellType,pos) {
   //0 -> Unpassable terrain, 1 -> part of dungeon, 2 -> Health ,3 -> enemy ,4 -> weapon,5-> next level entrance,6-> Player position.
@@ -437,7 +501,8 @@ canMove(row,col) {
       });
       console.log("Boss health:"+bossHealth);
       return canMoveB;
-
+      break;
+      default:console.log('bug');
     }
     return true;
   }
@@ -446,20 +511,22 @@ canMove(row,col) {
 
 
   render() {
+    if(!this.state.gameStarted)
+    return (<div className = 'welcomeScreen'><div className='startButton' onClick = {this.startGame}>Start game</div><InstructionScreen></InstructionScreen></div>);
     if(this.state.isLoss)
-    return(<h1>You Lost!</h1>)
+    return(<div className = 'endScreen'><div className='resetButton' onClick ={this.resetGame}><i className=" blue fas fa-redo"></i></div><h1>You died. Game over.</h1><i className="red fas fa-frown fa-4x"></i></div>)
     else if(this.state.isWin)
-      return(<h1>You Win!</h1>)
+      return(<div className ='endScreen'><div className='resetButton'  onClick ={this.resetGame}><i className=" blue fas fa-redo"></i></div><h1>You saved the world from total destruction!</h1><i className="green fas fa-smile fa-4x"></i></div>)
       else
     return (
-      <div className ="App">
+      <div className ="App" autoFocus='true' >
       <div className ="gameInfo">
       <h1>Dungeon:{this.state.levelNum}</h1>
       <div>Lv.{this.state.playerLevel}<progress className ='healthBar' value={this.state.health} max={this.state.playerLevel * 50 + 50}></progress>  Exp: <progress className ='Experience' value={this.state.playerExp} max={100}></progress></div>
       <div>Weapon: {this.state.weapons[this.state.weapon]}</div>
       </div>
       <hr/>
-      <div className="wrapper" onKeyDown = {this.moveChar} tabIndex='0'>
+      <div className="wrapper" >
         {this.state.level.map ( (r,i) => {
           return (<div className='row'
                     key={i}

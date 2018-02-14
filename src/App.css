@@ -9,7 +9,8 @@ body {
   flex-direction:column;
   justify-content:center;
   align-items: center;
-  background:lightblue;
+  background:#ba57e8;
+  font-family: 'VT323', monospace;
 }
 
 .wrapper {
@@ -27,7 +28,92 @@ body {
   height: 45px;
 }
 
+.instructionBoard {
+  font-family: 'VT323', monospace;
+  font-size:1.2em;
+  background:white;
+  padding:5px;
+  border-radius:5px;
+}
 
+.right {
+  float:right;
+  height: 45px;
+  width: 25px;
+
+}
+
+li {
+  height:50px;
+  line-height:45px;
+}
+
+.red {
+  color:red;
+}
+
+.green{
+  color:green;
+}
+
+
+
+.endScreen {
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  align-items: center;
+}
+
+.welcomeScreen {
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  align-items: center;
+}
+
+.resetButton {
+  background:white;
+  color:blue;
+  height:100px;
+  width:100px;
+  font-size:50px;
+  line-height:100px;
+  text-align:center;
+  border-radius:25%;
+  transition: border-radius 0.25s;
+}
+
+.resetButton:hover {
+  color:white;
+  background:blue;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+
+.startButton {
+  font-family: 'VT323', monospace;
+  line-height:45px;
+  border-radius:5px;
+  font-size:2em;
+  text-align:center;
+  height:45px;
+  width:200px;
+  background:white;
+  color:red;
+  transition: border-radius 0.25s;
+  margin:10px;
+
+}
+
+.startButton:hover {
+border-radius:15px;
+font-size:1.5em;
+background:red;
+color:white;
+cursor:pointer;
+}
 
 .cell {
 
@@ -89,13 +175,14 @@ body {
 .healthBar {
   background:red;
   color:red;
-  appearence:none;
   border-radius:2px;
 }
 
 .hidden {
   background:grey;
 }
+
+
 .lord-up-0,
 .lord-up-1,
 .lord-up-2,
